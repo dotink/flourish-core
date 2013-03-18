@@ -1,0 +1,19 @@
+{
+	"name": "dotink/flourish-core",
+	"description": "Useful debugging, error/exception handling, and normalization classes",
+	"keywords": ["error handling", "exception handling", "debugging"],
+	"license": "AGPL 3.0",
+	"authors": [
+		{
+			"name": "Matthew J. Sahagian",
+			"email": "matt@imarc.net",
+			"role": "Developer"
+		}
+	],
+	"require": {
+		"php": ">=5.3.0"
+	},
+	"autoload": {
+		"classmap": ["src/"]
+	}
+}
