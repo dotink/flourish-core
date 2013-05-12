@@ -853,7 +853,7 @@
 			$backtrace = preg_replace('#: ' . $rx_method . '\(.*?\)$#', '', $backtrace);
 			$message   = preg_replace('# \[<a href=\'.*?</a>\]: #', ': ', $message);
 
-			switch ($error_number) {
+			switch ($number) {
 				case E_WARNING:           $type = self::compose('Warning');           break;
 				case E_NOTICE:            $type = self::compose('Notice');            break;
 				case E_USER_ERROR:        $type = self::compose('User Error');        break;
