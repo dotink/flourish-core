@@ -269,6 +269,56 @@
 
 
 		/**
+		 * Makes sure that the PRNG has been seeded with a fairly secure value
+		 *
+		 * @static
+		 * @access private
+		 * @return void
+		 */
+		static private function seedRandom()
+		{
+			static $seeded = FALSE;
+
+			if ($seeded) {
+				return;
+			}
+
+			self::startErrorCapture(E_WARNING);
+
+			$bytes = NULL;
+
+			// On linux/unix/solaris we should be able to use /dev/urandom
+			if (!self::checkOS('windows') && $handle = fopen('/dev/urandom', 'rb')) {
+				$bytes = fread($handle, 4);
+				fclose($handle);
+
+			// On windows we should be able to use the Cryptographic Application Programming Interface COM object
+			} elseif (self::checkOS('windows') && class_exists('COM', FALSE)) {
+				try {
+					// This COM object no longer seems to work on PHP 5.2.9+, no response on the bug report yet
+					$capi  = new COM('CAPICOM.Utilities.1');
+					$bytes = base64_decode($capi->getrandom(4, 0));
+					unset($capi);
+				} catch (Exception $e) { }
+			}
+
+			// If we could not use the OS random number generators we get some of the most unique info we can
+			if (!$bytes) {
+				$string = microtime(TRUE) . uniqid('', TRUE) . join('', stat(__FILE__)) . disk_free_space(dirname(__FILE__));
+				$bytes  = substr(pack('H*', md5($string)), 0, 4);
+			}
+
+			self::stopErrorCapture();
+
+			$seed = (int) (base_convert(bin2hex($bytes), 16, 10) - 2147483647);
+
+			mt_srand($seed);
+
+			$seeded = TRUE;
+		}
+
+
+		/**
 		 * Creates a nicely formatted backtrace to the the point where this method is called
 		 *
 		 * @static
@@ -975,6 +1025,86 @@
 					E_USER_ERROR
 				);
 			}
+		}
+
+
+		/**
+		 * Generates a random number using [http://php.net/mt_rand mt_rand()] after ensuring a good PRNG seed
+		 *
+		 * @param  integer $min  The minimum number to return
+		 * @param  integer $max  The maximum number to return
+		 * @return integer  The psuedo-random number
+		 */
+		static public function random($min=NULL, $max=NULL)
+		{
+			self::seedRandom();
+
+			if ($min !== NULL || $max !== NULL) {
+				return mt_rand($min, $max);
+			}
+
+			return mt_rand();
+		}
+
+
+		/**
+		 * Returns a random string of the type and length specified
+		 *
+		 * @param  integer $length  The length of string to return
+		 * @param  string  $type    The type of string to return: `'base64'`, `'base56'`, `'base36'`, `'alphanumeric'`, `'alpha'`, `'numeric'`, or `'hexadecimal'`, if a different string is provided, it will be used for the alphabet
+		 * @return string  A random string of the type and length specified
+		 */
+		static public function randomString($length, $type='alphanumeric')
+		{
+			if ($length < 1) {
+				throw new ProgrammerException(
+					'The length specified, %1$s, is less than the minimum of %2$s',
+					$length,
+					1
+				);
+			}
+
+			switch ($type) {
+				case 'base64':
+					$alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/';
+					break;
+
+				case 'alphanumeric':
+					$alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+					break;
+
+				case 'base56':
+					$alphabet = 'abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+					break;
+
+				case 'alpha':
+					$alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+					break;
+
+				case 'base36':
+					$alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+					break;
+
+				case 'hexadecimal':
+					$alphabet = 'abcdef0123456789';
+					break;
+
+				case 'numeric':
+					$alphabet = '0123456789';
+					break;
+
+				default:
+					$alphabet = $type;
+			}
+
+			$alphabet_length = strlen($alphabet);
+			$output = '';
+
+			for ($i = 0; $i < $length; $i++) {
+				$output .= $alphabet[self::random(0, $alphabet_length-1)];
+			}
+
+			return $output;
 		}
 
 
