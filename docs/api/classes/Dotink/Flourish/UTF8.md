@@ -2,7 +2,7 @@
 ## Provides string functions for UTF-8 strings
 
 _Copyright (c) 2008-2011 Will Bond_.
-[http://flourishlib.com/license](http://flourishlib.com/license)
+_Please see the LICENSE file at the root of this distribution_
 
 ### Details
 

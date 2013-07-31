@@ -2,7 +2,7 @@
 ## An exception that allows for easy l10n, printing, tracing and hooking.
 
 _Copyright (c) 2007-2012 Will Bond, others_.
-[http://flourishlib.com/license](http://flourishlib.com/license)
+_Please see the LICENSE file at the root of this distribution_
 
 ### Extends
 
