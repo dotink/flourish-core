@@ -21,9 +21,7 @@
 	"extra": {
 		"opus": {
 			"dotink/inkwell-2.0": {
-				"src/Exceptions": "library/flourish",
-				"src/Core.php":   "library/flourish/Core.php",
-				"src/UTF8.php":   "library/flourish/UTF8.php"
+				"src": "library/flourish"
 			}
 		}
 	}
