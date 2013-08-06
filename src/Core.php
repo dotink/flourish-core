@@ -586,6 +586,48 @@
 
 
 		/**
+		 * Dereferences an array to return nested data based on a string
+		 *
+		 * @static
+		 * @access public
+		 * @param string $key The referenced key to return ex: test[element][subelement]
+		 * @param array $data The data to dereference
+		 * @return mixed The value referenced by the key in the data
+		 */
+		static public function dereference($key, $data)
+		{
+			$keys      = array();
+			$value     = $data;
+			$reference = NULL;
+
+			if (strpos($key, '[')) {
+				$bracket_pos = strpos($key, '[');
+				$reference   = substr($key, $bracket_pos);
+				$key         = substr($key, 0, $bracket_pos);
+
+				if (preg_match_all('#(?<=\[)[^\[\]]+(?=\])#', $reference, $keys, PREG_SET_ORDER)) {
+					$keys = array_map('current', $keys);
+				}
+			}
+
+			array_unshift($keys, $key);
+
+			foreach ($keys as $key) {
+				if (!is_array($value) || !array_key_exists($key, $value)) {
+					throw new ProgrammerException (
+						'Cannot dereference %s, value is not an array or key does not exist',
+						$key
+					);
+				}
+
+				$value = $value[$key];
+			}
+
+			return $value;
+		}
+
+
+		/**
 		 * Creates a string representation of any variable using predefined strings for booleans,
 		 * `NULL` and empty strings
 		 *
