@@ -135,6 +135,26 @@ The email address to send error emails from
 ### Static Methods
 <hr />
 
+#### <span style="color:#3e6a6e;">seedRandom()</span>
+
+Makes sure that the PRNG has been seeded with a fairly secure value
+
+###### Returns
+
+<dl>
+	
+		<dt>
+			void
+		</dt>
+		<dd>
+			Provides no return value.
+		</dd>
+	
+</dl>
+
+
+<hr />
+
 #### <span style="color:#3e6a6e;">backtrace()</span>
 
 Creates a nicely formatted backtrace to the the point where this method is called
@@ -518,6 +538,65 @@ Prints a debugging message if global or code-specific debugging is enabled
 		</dt>
 		<dd>
 			Provides no return value.
+		</dd>
+	
+</dl>
+
+
+<hr />
+
+#### <span style="color:#3e6a6e;">dereference()</span>
+
+Dereferences an array to return nested data based on a string
+
+###### Parameters
+
+<table>
+	<thead>
+		<th>Name</th>
+		<th>Type(s)</th>
+		<th>Description</th>
+	</thead>
+	<tbody>
+			
+		<tr>
+			<td>
+				$key
+			</td>
+			<td>
+									<a href="http://www.php.net/language.types.string.php">string</a>
+				
+			</td>
+			<td>
+				The referenced key to return ex: test[element][subelement]
+			</td>
+		</tr>
+					
+		<tr>
+			<td>
+				$data
+			</td>
+			<td>
+									<a href="http://www.php.net/language.types.array.php">array</a>
+				
+			</td>
+			<td>
+				The data to dereference
+			</td>
+		</tr>
+			
+	</tbody>
+</table>
+
+###### Returns
+
+<dl>
+	
+		<dt>
+			mixed
+		</dt>
+		<dd>
+			The value referenced by the key in the data
 		</dd>
 	
 </dl>
@@ -1080,6 +1159,124 @@ the specified destination and finally executing the closing callback
 		</dt>
 		<dd>
 			Provides no return value.
+		</dd>
+	
+</dl>
+
+
+<hr />
+
+#### <span style="color:#3e6a6e;">random()</span>
+
+Generates a random number using [http://php.net/mt_rand mt_rand()] after ensuring a good PRNG seed
+
+###### Parameters
+
+<table>
+	<thead>
+		<th>Name</th>
+		<th>Type(s)</th>
+		<th>Description</th>
+	</thead>
+	<tbody>
+			
+		<tr>
+			<td>
+				$min
+			</td>
+			<td>
+									<a href="http://www.php.net/language.types.integer.php">integer</a>
+				
+			</td>
+			<td>
+				The minimum number to return
+			</td>
+		</tr>
+					
+		<tr>
+			<td>
+				$max
+			</td>
+			<td>
+									<a href="http://www.php.net/language.types.integer.php">integer</a>
+				
+			</td>
+			<td>
+				The maximum number to return
+			</td>
+		</tr>
+			
+	</tbody>
+</table>
+
+###### Returns
+
+<dl>
+	
+		<dt>
+			integer
+		</dt>
+		<dd>
+			The psuedo-random number
+		</dd>
+	
+</dl>
+
+
+<hr />
+
+#### <span style="color:#3e6a6e;">randomString()</span>
+
+Returns a random string of the type and length specified
+
+###### Parameters
+
+<table>
+	<thead>
+		<th>Name</th>
+		<th>Type(s)</th>
+		<th>Description</th>
+	</thead>
+	<tbody>
+			
+		<tr>
+			<td>
+				$length
+			</td>
+			<td>
+									<a href="http://www.php.net/language.types.integer.php">integer</a>
+				
+			</td>
+			<td>
+				The length of string to return
+			</td>
+		</tr>
+					
+		<tr>
+			<td>
+				$type
+			</td>
+			<td>
+									<a href="http://www.php.net/language.types.string.php">string</a>
+				
+			</td>
+			<td>
+				The type of string to return: `'base64'`, `'base56'`, `'base36'`, `'alphanumeric'`, `'alpha'`, `'numeric'`, or `'hexadecimal'`, if a different string is provided, it will be used for the alphabet
+			</td>
+		</tr>
+			
+	</tbody>
+</table>
+
+###### Returns
+
+<dl>
+	
+		<dt>
+			string
+		</dt>
+		<dd>
+			A random string of the type and length specified
 		</dd>
 	
 </dl>

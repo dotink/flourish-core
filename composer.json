@@ -2,7 +2,7 @@
 	"name": "dotink/flourish-core",
 	"description": "Useful debugging, error/exception handling, and normalization classes",
 	"keywords": ["error handling", "exception handling", "debugging"],
-	"license": "AGPL 3.0",
+	"license": "AGPL-3.0",
 	"type": "opus-package",
 	"authors": [
 		{
