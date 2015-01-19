@@ -32,6 +32,7 @@
 		const istr     = 'Dotink\Flourish\UTF8::istr';
 		const len      = 'Dotink\Flourish\UTF8::len';
 		const lower    = 'Dotink\Flourish\UTF8::lower';
+		const lcfirst  = 'Dotink\Flourish\UTF8::lcfirst';
 		const ltrim    = 'Dotink\Flourish\UTF8::ltrim';
 		const natcmp   = 'Dotink\Flourish\UTF8::natcmp';
 		const ord      = 'Dotink\Flourish\UTF8::ord';
@@ -976,6 +977,18 @@
 			}
 
 			return strlen(utf8_decode($string));
+		}
+
+
+		/**
+		 * Converts the first character of the string to lowercase.
+		 *
+		 * @param  string $string  The string to process
+		 * @return string  The processed string
+		 */
+		static public function lcfirst($string)
+		{
+			return self::lower(self::sub($string, 0, 1)) . self::sub($string, 1);
 		}
 
 
