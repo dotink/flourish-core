@@ -1,19 +1,17 @@
-<?php namespace Dotink\Flourish {
-
+<?php namespace Dotink\Flourish
+{
 	/**
 	 * An exception that allows for easy l10n, printing, tracing and hooking.
 	 *
 	 *
-	 * @copyright  Copyright (c) 2007-2012 Will Bond, others
-	 * @author     Will Bond           [wb]  <will@flourishlib.com>
-	 * @author     Matthew J. Sahagian [mjs] <msahagian@dotink.org>
+	 * @copyright Copyright (c) 2007-2015 Will Bond, Matthew J. Sahagian, others
+	 * @author Will Bond [wb] <will@flourishlib.com>
+	 * @author Matthew J. Sahagian [mjs] <msahagian@dotink.org>
 	 *
-	 * @license    Please see the LICENSE file at the root of this distribution
+	 * @license Please reference the LICENSE.md file at the root of this distribution
 	 *
-	 * @package    Flourish
+	 * @package Flourish
 	 */
-
-
 	abstract class Exception extends \Exception
 	{
 		/**
