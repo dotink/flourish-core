@@ -308,7 +308,7 @@
 				$components = $components[0];
 			}
 
-			if (class_exists($text_class = __NAMESPACE__ . '\Text')) {
+			if (class_exists(__NAMESPACE__ . '\Text')) {
 				return Text::create($message)->compose(NULL, $components);
 			} else {
 				return vsprintf($message, $components);

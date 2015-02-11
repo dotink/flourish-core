@@ -1,14 +1,13 @@
 # UTF8
 ## Provides string functions for UTF-8 strings
 
-_Copyright (c) 2008-2011 Will Bond_.
-_Please see the LICENSE file at the root of this distribution_
+_Copyright (c) 2007-2015 Will Bond, Matthew J. Sahagian, others_.
+_Please reference the LICENSE.md file at the root of this distribution_
 
 ### Details
 
 This class is implemented to provide a UTF-8 version of almost every built-in
-PHP string function. For more information about UTF-8, please visit
-http://flourishlib.com/docs/UTF-8.
+PHP string function.
 
 #### Namespace
 
@@ -53,7 +52,7 @@ http://flourishlib.com/docs/UTF-8.
 
 ## Properties
 ### Static Properties
-#### <span style="color:#6a6e3d;">$can_ignore_invalid</span>
+#### <span style="color:#6a6e3d;">$canIgnoreInvalid</span>
 
 Depending how things are compiled, NetBSD and Solaris don't support //IGNORE in iconv()
 
@@ -61,29 +60,29 @@ Depending how things are compiled, NetBSD and Solaris don't support //IGNORE in 
 
 If //IGNORE support is not provided strings with invalid characters will be truncated
 
-#### <span style="color:#6a6e3d;">$lower_to_upper</span>
+#### <span style="color:#6a6e3d;">$lowerToUpper</span>
 
 All lowercase UTF-8 characters mapped to uppercase characters
 
-#### <span style="color:#6a6e3d;">$mb_lower_to_upper_fix</span>
+#### <span style="color:#6a6e3d;">$mbLowerToUpperFix</span>
 
-All lowercase UTF-8 characters not properly handled by [http://php.net/mb_strtoupper mb_strtoupper()] mapped to uppercase characters
+Lowercase to uppercase mapping of UTF-8 characters not handled by `mb_strtoupper`
 
-#### <span style="color:#6a6e3d;">$mb_upper_to_lower_fix</span>
+#### <span style="color:#6a6e3d;">$mbUpperToLowerFix</span>
 
-All uppercase UTF-8 characters not properly handled by [http://php.net/mb_strtolower mb_strtolower()] mapped to lowercase characters
+Uppercase to lowercase mapping of UTF-8 character not handled by `mb_strtolower`
 
-#### <span style="color:#6a6e3d;">$upper_to_lower</span>
+#### <span style="color:#6a6e3d;">$upperToLower</span>
 
 All uppercase UTF-8 characters mapped to lowercase characters
 
-#### <span style="color:#6a6e3d;">$utf8_to_ascii</span>
+#### <span style="color:#6a6e3d;">$utf8ToAscii</span>
 
-A mapping of all ASCII-based latin characters, puntuation, symbols and number forms to ASCII.
+A mapping of all ASCII-based latin characters, puntuation, etc to ASCII.
 
 ##### Details
 
-Includes elements form the following unicode blocks:
+Includes elements from the following unicode blocks:
 
 - Latin-1 Supplement
 - Latin Extended-A
@@ -94,9 +93,9 @@ Includes elements form the following unicode blocks:
 - Letterlike symbols
 - Number Forms
 
-#### <span style="color:#6a6e3d;">$mbstring_available</span>
+#### <span style="color:#6a6e3d;">$hasMbString</span>
 
-If the [http://php.net/mbstring mbstring] extension is available
+If the `mbstring` extension is available
 
 
 
@@ -117,7 +116,7 @@ Any characters or symbols that can not be translated will be removed.
 This function is most useful for situation that only allows ASCII, such
 as in URLs.
 
-Translates elements form the following unicode blocks:
+Translates elements from the following unicode blocks:
 
 - Latin-1 Supplement
 - Latin Extended-A
@@ -143,7 +142,7 @@ Translates elements form the following unicode blocks:
 				$string
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
+									<a href="http://php.net/language.types.string">string</a>
 				
 			</td>
 			<td>
@@ -170,26 +169,6 @@ Translates elements form the following unicode blocks:
 
 <hr />
 
-#### <span style="color:#3e6a6e;">checkMbString()</span>
-
-Checks to see if the [http://php.net/mbstring mbstring] extension is available
-
-###### Returns
-
-<dl>
-	
-		<dt>
-			void
-		</dt>
-		<dd>
-			Provides no return value.
-		</dd>
-	
-</dl>
-
-
-<hr />
-
 #### <span style="color:#3e6a6e;">chr()</span>
 
 Converts a unicode value into a UTF-8 character
@@ -209,11 +188,11 @@ Converts a unicode value into a UTF-8 character
 				$unicode_code_point
 			</td>
 			<td>
-									<a href="http://www.php.net/language.pseudo-types.php">mixed</a>
+									<a href="http://php.net/language.pseudo-types">mixed</a>
 				
 			</td>
 			<td>
-				The character to create, either the `U+hex` or decimal code point
+				The char to create via `U+hex` or decimal code point
 			</td>
 		</tr>
 			
@@ -255,7 +234,7 @@ Removes any invalid UTF-8 characters from a string or array of strings
 				$value
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.array.php">array</a>
+									<a href="http://php.net/language.types.array">array</a>
 				
 			</td>
 			<td rowspan="3">
@@ -265,7 +244,7 @@ Removes any invalid UTF-8 characters from a string or array of strings
 			
 		<tr>
 			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
+									<a href="http://php.net/language.types.string">string</a>
 				
 			</td>
 		</tr>
@@ -291,14 +270,15 @@ Removes any invalid UTF-8 characters from a string or array of strings
 
 #### <span style="color:#3e6a6e;">cmp()</span>
 
-Compares strings, with the resulting order having latin characters that are based on ASCII letters placed after the relative ASCII characters
+Compares strings
 
 ##### Details
 
-Please note that this function sorts based on English language sorting
-rules only. Locale-sepcific sorting is done by
-[http://php.net/strcoll strcoll()], however there are technical
-limitations.
+The resulting order having latin characters that are based on ASCII letters placed after
+the relative ASCII characters
+
+Please note that this function sorts based on English language sorting rules only.
+Locale-sepcific sorting is done by `strcoll` however there are technical limitations.
 
 ###### Parameters
 
@@ -315,7 +295,7 @@ limitations.
 				$str1
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
+									<a href="http://php.net/language.types.string">string</a>
 				
 			</td>
 			<td>
@@ -328,7 +308,7 @@ limitations.
 				$str2
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
+									<a href="http://php.net/language.types.string">string</a>
 				
 			</td>
 			<td>
@@ -355,119 +335,14 @@ limitations.
 
 <hr />
 
-#### <span style="color:#3e6a6e;">convertOffsetToBytes()</span>
-
-Converts an offset in characters to an offset in bytes to that we can use the built-in functions for some operations
-
-###### Parameters
-
-<table>
-	<thead>
-		<th>Name</th>
-		<th>Type(s)</th>
-		<th>Description</th>
-	</thead>
-	<tbody>
-			
-		<tr>
-			<td>
-				$string
-			</td>
-			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
-				
-			</td>
-			<td>
-				The string to base the offset on
-			</td>
-		</tr>
-					
-		<tr>
-			<td>
-				$offset
-			</td>
-			<td>
-									<a href="http://www.php.net/language.types.integer.php">integer</a>
-				
-			</td>
-			<td>
-				The character offset to conver to bytes
-			</td>
-		</tr>
-			
-	</tbody>
-</table>
-
-###### Returns
-
-<dl>
-	
-		<dt>
-			integer
-		</dt>
-		<dd>
-			The converted offset
-		</dd>
-	
-</dl>
-
-
-<hr />
-
-#### <span style="color:#3e6a6e;">detect()</span>
-
-Detects if a UTF-8 string contains any non-ASCII characters
-
-###### Parameters
-
-<table>
-	<thead>
-		<th>Name</th>
-		<th>Type(s)</th>
-		<th>Description</th>
-	</thead>
-	<tbody>
-			
-		<tr>
-			<td>
-				$string
-			</td>
-			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
-				
-			</td>
-			<td>
-				The string to check
-			</td>
-		</tr>
-			
-	</tbody>
-</table>
-
-###### Returns
-
-<dl>
-	
-		<dt>
-			boolean
-		</dt>
-		<dd>
-			If the string contains any non-ASCII characters
-		</dd>
-	
-</dl>
-
-
-<hr />
-
 #### <span style="color:#3e6a6e;">explode()</span>
 
 Explodes a string on a delimiter
 
 ##### Details
 
-If no delimiter is provided, the string will be exploded with each
-characters being an element in the array.
+If no delimiter is provided, the string will be exploded with each characters being an
+element in the array.
 
 ###### Parameters
 
@@ -484,7 +359,7 @@ characters being an element in the array.
 				$string
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
+									<a href="http://php.net/language.types.string">string</a>
 				
 			</td>
 			<td>
@@ -497,11 +372,11 @@ characters being an element in the array.
 				$delimiter
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
+									<a href="http://php.net/language.types.string">string</a>
 				
 			</td>
 			<td>
-				The string to explode on. If `NULL` or `''` this method will return one character per array index.
+				The string to explode on.
 			</td>
 		</tr>
 			
@@ -524,90 +399,17 @@ characters being an element in the array.
 
 <hr />
 
-#### <span style="color:#3e6a6e;">iconv()</span>
-
-This works around a bug in MAMP 1.9.4+ and PHP 5.3 where iconv()
-does not seem to properly assign the return value to a variable, but
-does work when returning the value.
-
-###### Parameters
-
-<table>
-	<thead>
-		<th>Name</th>
-		<th>Type(s)</th>
-		<th>Description</th>
-	</thead>
-	<tbody>
-			
-		<tr>
-			<td>
-				$in_charset
-			</td>
-			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
-				
-			</td>
-			<td>
-				The incoming character encoding
-			</td>
-		</tr>
-					
-		<tr>
-			<td>
-				$out_charset
-			</td>
-			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
-				
-			</td>
-			<td>
-				The outgoing character encoding
-			</td>
-		</tr>
-					
-		<tr>
-			<td>
-				$string
-			</td>
-			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
-				
-			</td>
-			<td>
-				The string to convert
-			</td>
-		</tr>
-			
-	</tbody>
-</table>
-
-###### Returns
-
-<dl>
-	
-		<dt>
-			string
-		</dt>
-		<dd>
-			The converted string
-		</dd>
-	
-</dl>
-
-
-<hr />
-
 #### <span style="color:#3e6a6e;">icmp()</span>
 
-Compares strings in a case-insensitive manner, with the resulting order having characters that are based on ASCII letters placed after the relative ASCII characters
+Compares strings in a case-insensitive manner
 
 ##### Details
 
-Please note that this function sorts based on English language sorting
-rules only. Locale-sepcific sorting is done by
-[http://php.net/strcoll strcoll()], however there are technical
-limitations.
+The resulting order having characters that are based on ASCII letters placed after
+the relative ASCII characters
+
+Please note that this function sorts based on English language sorting rules only.
+Locale-sepcific sorting is done by `strcoll` however there are technical limitations.
 
 ###### Parameters
 
@@ -624,7 +426,7 @@ limitations.
 				$str1
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
+									<a href="http://php.net/language.types.string">string</a>
 				
 			</td>
 			<td>
@@ -637,7 +439,7 @@ limitations.
 				$str2
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
+									<a href="http://php.net/language.types.string">string</a>
 				
 			</td>
 			<td>
@@ -666,14 +468,15 @@ limitations.
 
 #### <span style="color:#3e6a6e;">inatcmp()</span>
 
-Compares strings using a natural order algorithm in a case-insensitive manner, with the resulting order having latin characters that are based on ASCII letters placed after the relative ASCII characters
+Compares strings using a natural order algorithm in a case-insensitive manner
 
 ##### Details
 
-Please note that this function sorts based on English language sorting
-rules only. Locale-sepcific sorting is done by
-[http://php.net/strcoll strcoll()], however there are technical
-limitations.
+The resulting order having characters that are based on ASCII letters placed after
+the relative ASCII characters
+
+Please note that this function sorts based on English language sorting rules only.
+Locale-sepcific sorting is done by `strcoll` however there are technical limitations.
 
 ###### Parameters
 
@@ -690,7 +493,7 @@ limitations.
 				$str1
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
+									<a href="http://php.net/language.types.string">string</a>
 				
 			</td>
 			<td>
@@ -703,7 +506,7 @@ limitations.
 				$str2
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
+									<a href="http://php.net/language.types.string">string</a>
 				
 			</td>
 			<td>
@@ -722,7 +525,7 @@ limitations.
 			integer
 		</dt>
 		<dd>
-			`< 0` if `$str1 < $str2`, `0` if they are equal, `> 0` if `$str1 > $str2`
+			< 0 if $str1 < $str2, 0 if they are equal, > 0 if $str1 > $str2
 		</dd>
 	
 </dl>
@@ -732,7 +535,11 @@ limitations.
 
 #### <span style="color:#3e6a6e;">ipos()</span>
 
-Finds the first position (in characters) of the search value in the string - case is ignored when doing performing a match
+Finds the first position (in characters) of the search value in the string
+
+##### Details
+
+Case is ignored when performing a match
 
 ###### Parameters
 
@@ -749,7 +556,7 @@ Finds the first position (in characters) of the search value in the string - cas
 				$haystack
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
+									<a href="http://php.net/language.types.string">string</a>
 				
 			</td>
 			<td>
@@ -762,11 +569,11 @@ Finds the first position (in characters) of the search value in the string - cas
 				$needle
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
+									<a href="http://php.net/language.types.string">string</a>
 				
 			</td>
 			<td>
-				The string to search for. This match will be done in a case-insensitive manner.
+				The string to search for
 			</td>
 		</tr>
 					
@@ -775,7 +582,7 @@ Finds the first position (in characters) of the search value in the string - cas
 				$offset
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.integer.php">integer</a>
+									<a href="http://php.net/language.types.integer">integer</a>
 				
 			</td>
 			<td>
@@ -794,7 +601,7 @@ Finds the first position (in characters) of the search value in the string - cas
 			mixed
 		</dt>
 		<dd>
-			The integer character position of the first occurence of the needle or `FALSE` if no match
+			The position of the first occurence of the needle or `FALSE` if no match
 		</dd>
 	
 </dl>
@@ -804,14 +611,15 @@ Finds the first position (in characters) of the search value in the string - cas
 
 #### <span style="color:#3e6a6e;">ireplace()</span>
 
-Replaces matching parts of the string, with matches being done in a a case-insensitive manner
+Replaces matching parts of the string
 
 ##### Details
 
-If `$search` and `$replace` are both arrays and `$replace` is shorter,
-the extra `$search` string will be replaced with an empty string. If
-`$search` is an array and `$replace` is a string, all `$search` values
-will be replaced with the string specified.
+Matches are done in a a case-insensitive manner.
+
+If `$search` and `$replace` are both arrays and `$replace` is shorter, the extra
+`$search` string will be replaced with an empty string. If `$search` is an array and
+`$replace` is a string, all `$search` values will be replaced with the string specified.
 
 ###### Parameters
 
@@ -828,7 +636,7 @@ will be replaced with the string specified.
 				$string
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
+									<a href="http://php.net/language.types.string">string</a>
 				
 			</td>
 			<td>
@@ -841,11 +649,11 @@ will be replaced with the string specified.
 				$search
 			</td>
 			<td>
-									<a href="http://www.php.net/language.pseudo-types.php">mixed</a>
+									<a href="http://php.net/language.pseudo-types">mixed</a>
 				
 			</td>
 			<td>
-				The string (or array of strings) to search for - see method description for details
+				The string (or array of strings) to search for
 			</td>
 		</tr>
 					
@@ -854,11 +662,11 @@ will be replaced with the string specified.
 				$replace
 			</td>
 			<td>
-									<a href="http://www.php.net/language.pseudo-types.php">mixed</a>
+									<a href="http://php.net/language.pseudo-types">mixed</a>
 				
 			</td>
 			<td>
-				The string (or array of strings) to replace with - see method description for details
+				The string (or array of strings) to replace with
 			</td>
 		</tr>
 			
@@ -883,7 +691,14 @@ will be replaced with the string specified.
 
 #### <span style="color:#3e6a6e;">irpos()</span>
 
-Finds the last position (in characters) of the search value in the string - case is ignored when doing performing a match
+Finds the last position (in characters) of the search value in the string
+
+##### Details
+
+Case is ignored when performing a match.
+
+A negative `$offset` value will stop looking that many characters from the end of the
+string.
 
 ###### Parameters
 
@@ -900,7 +715,7 @@ Finds the last position (in characters) of the search value in the string - case
 				$haystack
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
+									<a href="http://php.net/language.types.string">string</a>
 				
 			</td>
 			<td>
@@ -913,11 +728,11 @@ Finds the last position (in characters) of the search value in the string - case
 				$needle
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
+									<a href="http://php.net/language.types.string">string</a>
 				
 			</td>
 			<td>
-				The string to search for. This match will be done in a case-insensitive manner.
+				The string to search for.
 			</td>
 		</tr>
 					
@@ -926,11 +741,11 @@ Finds the last position (in characters) of the search value in the string - case
 				$offset
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.integer.php">integer</a>
+									<a href="http://php.net/language.types.integer">integer</a>
 				
 			</td>
 			<td>
-				The character position to start searching from. A negative value will stop looking that many characters from the end of the string
+				The character position to start searching from.
 			</td>
 		</tr>
 			
@@ -945,7 +760,7 @@ Finds the last position (in characters) of the search value in the string - case
 			mixed
 		</dt>
 		<dd>
-			The integer character position of the last occurence of the needle or `FALSE` if no match
+			The position of the last occurence of the needle or `FALSE` if no match
 		</dd>
 	
 </dl>
@@ -955,12 +770,12 @@ Finds the last position (in characters) of the search value in the string - case
 
 #### <span style="color:#3e6a6e;">istr()</span>
 
-Matches a string needle in the string haystack, returning a substring from the beginning of the needle to the end of the haystack
+Get substring from the beginning of the needle to the end of the haystack
 
 ##### Details
 
-Can optionally return the part of the haystack before the needle. Matching
-is done in a case-insensitive manner.
+Can optionally return the part of the haystack before the needle. Matching is done in a
+case-insensitive manner.
 
 ###### Parameters
 
@@ -977,7 +792,7 @@ is done in a case-insensitive manner.
 				$haystack
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
+									<a href="http://php.net/language.types.string">string</a>
 				
 			</td>
 			<td>
@@ -990,11 +805,11 @@ is done in a case-insensitive manner.
 				$needle
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
+									<a href="http://php.net/language.types.string">string</a>
 				
 			</td>
 			<td>
-				The string to search for. This match will be done in a case-insensitive manner.
+				The string to search for
 			</td>
 		</tr>
 					
@@ -1003,11 +818,11 @@ is done in a case-insensitive manner.
 				$before_needle
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.boolean.php">boolean</a>
+									<a href="http://php.net/language.types.boolean">boolean</a>
 				
 			</td>
 			<td>
-				If a substring of the haystack before the needle should be returned instead of the substring from the needle to the end of the haystack
+				Get substring before the needle instead of after
 			</td>
 		</tr>
 			
@@ -1049,7 +864,7 @@ Determines the length (in characters) of a string
 				$string
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
+									<a href="http://php.net/language.types.string">string</a>
 				
 			</td>
 			<td>
@@ -1076,6 +891,52 @@ Determines the length (in characters) of a string
 
 <hr />
 
+#### <span style="color:#3e6a6e;">lcfirst()</span>
+
+Converts the first character of the string to lowercase.
+
+###### Parameters
+
+<table>
+	<thead>
+		<th>Name</th>
+		<th>Type(s)</th>
+		<th>Description</th>
+	</thead>
+	<tbody>
+			
+		<tr>
+			<td>
+				$string
+			</td>
+			<td>
+									<a href="http://php.net/language.types.string">string</a>
+				
+			</td>
+			<td>
+				The string to process
+			</td>
+		</tr>
+			
+	</tbody>
+</table>
+
+###### Returns
+
+<dl>
+	
+		<dt>
+			string
+		</dt>
+		<dd>
+			The processed string
+		</dd>
+	
+</dl>
+
+
+<hr />
+
 #### <span style="color:#3e6a6e;">lower()</span>
 
 Converts all uppercase characters to lowercase
@@ -1095,7 +956,7 @@ Converts all uppercase characters to lowercase
 				$string
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
+									<a href="http://php.net/language.types.string">string</a>
 				
 			</td>
 			<td>
@@ -1141,7 +1002,7 @@ Trims whitespace, or any specified characters, from the beginning of a string
 				$string
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
+									<a href="http://php.net/language.types.string">string</a>
 				
 			</td>
 			<td>
@@ -1154,7 +1015,7 @@ Trims whitespace, or any specified characters, from the beginning of a string
 				$charlist
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
+									<a href="http://php.net/language.types.string">string</a>
 				
 			</td>
 			<td>
@@ -1183,14 +1044,15 @@ Trims whitespace, or any specified characters, from the beginning of a string
 
 #### <span style="color:#3e6a6e;">natcmp()</span>
 
-Compares strings using a natural order algorithm, with the resulting order having latin characters that are based on ASCII letters placed after the relative ASCII characters
+Compares strings using a natural order algorithm
 
 ##### Details
 
-Please note that this function sorts based on English language sorting
-rules only. Locale-sepcific sorting is done by
-[http://php.net/strcoll strcoll()], however there are technical
-limitations.
+The resulting order having latin characters that are based on ASCII letters placed after
+the relative ASCII characters
+
+Please note that this function sorts based on English language sorting rules only.
+Locale-sepcific sorting is done by `strcoll` however there are technical limitations.
 
 ###### Parameters
 
@@ -1207,7 +1069,7 @@ limitations.
 				$str1
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
+									<a href="http://php.net/language.types.string">string</a>
 				
 			</td>
 			<td>
@@ -1220,7 +1082,7 @@ limitations.
 				$str2
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
+									<a href="http://php.net/language.types.string">string</a>
 				
 			</td>
 			<td>
@@ -1239,7 +1101,7 @@ limitations.
 			integer
 		</dt>
 		<dd>
-			`< 0` if `$str1 < $str2`, `0` if they are equal, `> 0` if `$str1 > $str2`
+			< 0 if $str1 < $str2, 0 if they are equal, > 0 if $str1 > $str2
 		</dd>
 	
 </dl>
@@ -1266,7 +1128,7 @@ Converts a UTF-8 character to a unicode code point
 				$character
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
+									<a href="http://php.net/language.types.string">string</a>
 				
 			</td>
 			<td>
@@ -1312,7 +1174,7 @@ Pads a string to the number of characters specified
 				$string
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
+									<a href="http://php.net/language.types.string">string</a>
 				
 			</td>
 			<td>
@@ -1325,7 +1187,7 @@ Pads a string to the number of characters specified
 				$pad_length
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.integer.php">integer</a>
+									<a href="http://php.net/language.types.integer">integer</a>
 				
 			</td>
 			<td>
@@ -1338,7 +1200,7 @@ Pads a string to the number of characters specified
 				$pad_string
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
+									<a href="http://php.net/language.types.string">string</a>
 				
 			</td>
 			<td>
@@ -1351,7 +1213,7 @@ Pads a string to the number of characters specified
 				$pad_type
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
+									<a href="http://php.net/language.types.string">string</a>
 				
 			</td>
 			<td>
@@ -1397,7 +1259,7 @@ Finds the first position (in characters) of the search value in the string
 				$haystack
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
+									<a href="http://php.net/language.types.string">string</a>
 				
 			</td>
 			<td>
@@ -1410,7 +1272,7 @@ Finds the first position (in characters) of the search value in the string
 				$needle
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
+									<a href="http://php.net/language.types.string">string</a>
 				
 			</td>
 			<td>
@@ -1423,7 +1285,7 @@ Finds the first position (in characters) of the search value in the string
 				$offset
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.integer.php">integer</a>
+									<a href="http://php.net/language.types.integer">integer</a>
 				
 			</td>
 			<td>
@@ -1442,7 +1304,7 @@ Finds the first position (in characters) of the search value in the string
 			mixed
 		</dt>
 		<dd>
-			The integer character position of the first occurence of the needle or `FALSE` if no match
+			The position of the first occurence of the needle or `FALSE` if no match
 		</dd>
 	
 </dl>
@@ -1456,10 +1318,9 @@ Replaces matching parts of the string
 
 ##### Details
 
-If `$search` and `$replace` are both arrays and `$replace` is shorter,
-the extra `$search` string will be replaced with an empty string. If
-`$search` is an array and `$replace` is a string, all `$search` values
-will be replaced with the string specified.
+If `$search` and `$replace` are both arrays and `$replace` is shorter, the extra
+`$search` string will be replaced with an empty string. If `$search` is an array and
+`$replace` is a string, all `$search` values will be replaced with the string specified.
 
 ###### Parameters
 
@@ -1476,7 +1337,7 @@ will be replaced with the string specified.
 				$string
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
+									<a href="http://php.net/language.types.string">string</a>
 				
 			</td>
 			<td>
@@ -1489,11 +1350,11 @@ will be replaced with the string specified.
 				$search
 			</td>
 			<td>
-									<a href="http://www.php.net/language.pseudo-types.php">mixed</a>
+									<a href="http://php.net/language.pseudo-types">mixed</a>
 				
 			</td>
 			<td>
-				The string (or array of strings) to search for - see method description for details
+				The string (or array of strings) to search for
 			</td>
 		</tr>
 					
@@ -1502,11 +1363,11 @@ will be replaced with the string specified.
 				$replace
 			</td>
 			<td>
-									<a href="http://www.php.net/language.pseudo-types.php">mixed</a>
+									<a href="http://php.net/language.pseudo-types">mixed</a>
 				
 			</td>
 			<td>
-				The string (or array of strings) to replace with - see method description for details
+				The string (or array of strings) to replace with
 			</td>
 		</tr>
 			
@@ -1522,26 +1383,6 @@ will be replaced with the string specified.
 		</dt>
 		<dd>
 			The input string with the specified replacements
-		</dd>
-	
-</dl>
-
-
-<hr />
-
-#### <span style="color:#3e6a6e;">reset()</span>
-
-Resets the configuration of the class
-
-###### Returns
-
-<dl>
-	
-		<dt>
-			void
-		</dt>
-		<dd>
-			Provides no return value.
 		</dd>
 	
 </dl>
@@ -1568,7 +1409,7 @@ Reverses a string
 				$string
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
+									<a href="http://php.net/language.types.string">string</a>
 				
 			</td>
 			<td>
@@ -1599,6 +1440,11 @@ Reverses a string
 
 Finds the last position (in characters) of the search value in the string
 
+##### Details
+
+A negative `$offset` value will stop looking that many characters from the end of the
+string.
+
 ###### Parameters
 
 <table>
@@ -1614,7 +1460,7 @@ Finds the last position (in characters) of the search value in the string
 				$haystack
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
+									<a href="http://php.net/language.types.string">string</a>
 				
 			</td>
 			<td>
@@ -1627,7 +1473,7 @@ Finds the last position (in characters) of the search value in the string
 				$needle
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
+									<a href="http://php.net/language.types.string">string</a>
 				
 			</td>
 			<td>
@@ -1640,11 +1486,11 @@ Finds the last position (in characters) of the search value in the string
 				$offset
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.integer.php">integer</a>
+									<a href="http://php.net/language.types.integer">integer</a>
 				
 			</td>
 			<td>
-				The character position to start searching from. A negative value will stop looking that many characters from the end of the string
+				The character position to start searching from.
 			</td>
 		</tr>
 			
@@ -1659,7 +1505,7 @@ Finds the last position (in characters) of the search value in the string
 			mixed
 		</dt>
 		<dd>
-			The integer character position of the last occurence of the needle or `FALSE` if no match
+			The position of the last occurence of the needle or `FALSE` if no match
 		</dd>
 	
 </dl>
@@ -1686,7 +1532,7 @@ Trims whitespace, or any specified characters, from the end of a string
 				$string
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
+									<a href="http://php.net/language.types.string">string</a>
 				
 			</td>
 			<td>
@@ -1699,7 +1545,7 @@ Trims whitespace, or any specified characters, from the end of a string
 				$charlist
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
+									<a href="http://php.net/language.types.string">string</a>
 				
 			</td>
 			<td>
@@ -1728,11 +1574,12 @@ Trims whitespace, or any specified characters, from the end of a string
 
 #### <span style="color:#3e6a6e;">str()</span>
 
-Matches a string needle in the string haystack, returning a substring from the beginning of the needle to the end of the haystack
+Get substring from the beginning of the needle to the end of the haystack
 
 ##### Details
 
-Can optionally return the part of the haystack before the needle.
+Can optionally return the part of the haystack before the needle. Matching is done in a
+case-sensitive manner.
 
 ###### Parameters
 
@@ -1749,7 +1596,7 @@ Can optionally return the part of the haystack before the needle.
 				$haystack
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
+									<a href="http://php.net/language.types.string">string</a>
 				
 			</td>
 			<td>
@@ -1762,7 +1609,7 @@ Can optionally return the part of the haystack before the needle.
 				$needle
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
+									<a href="http://php.net/language.types.string">string</a>
 				
 			</td>
 			<td>
@@ -1775,11 +1622,11 @@ Can optionally return the part of the haystack before the needle.
 				$before_needle
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.boolean.php">boolean</a>
+									<a href="http://php.net/language.types.boolean">boolean</a>
 				
 			</td>
 			<td>
-				If a substring of the haystack before the needle should be returned instead of the substring from the needle to the end of the haystack
+				Get substring before the needle instead of after
 			</td>
 		</tr>
 			
@@ -1806,6 +1653,11 @@ Can optionally return the part of the haystack before the needle.
 
 Extracts part of a string
 
+##### Details
+
+Negative values of `$start` will start the extraction that many characters from the end
+of the string.
+
 ###### Parameters
 
 <table>
@@ -1821,7 +1673,7 @@ Extracts part of a string
 				$string
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
+									<a href="http://php.net/language.types.string">string</a>
 				
 			</td>
 			<td>
@@ -1834,11 +1686,11 @@ Extracts part of a string
 				$start
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.integer.php">integer</a>
+									<a href="http://php.net/language.types.integer">integer</a>
 				
 			</td>
 			<td>
-				The zero-based starting index to extract from. Negative values will start the extraction that many characters from the end of the string.
+				The zero-based starting index to extract from.
 			</td>
 		</tr>
 					
@@ -1847,11 +1699,11 @@ Extracts part of a string
 				$length
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.integer.php">integer</a>
+									<a href="http://php.net/language.types.integer">integer</a>
 				
 			</td>
 			<td>
-				The length of the string to extract. If an empty value is provided, the remainder of the string will be returned.
+				The length of the string to extract, empty for end of line
 			</td>
 		</tr>
 			
@@ -1893,7 +1745,7 @@ Trims whitespace, or any specified characters, from the beginning and end of a s
 				$string
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
+									<a href="http://php.net/language.types.string">string</a>
 				
 			</td>
 			<td>
@@ -1906,7 +1758,7 @@ Trims whitespace, or any specified characters, from the beginning and end of a s
 				$charlist
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
+									<a href="http://php.net/language.types.string">string</a>
 				
 			</td>
 			<td>
@@ -1952,7 +1804,7 @@ Converts the first character of the string to uppercase.
 				$string
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
+									<a href="http://php.net/language.types.string">string</a>
 				
 			</td>
 			<td>
@@ -1985,8 +1837,8 @@ Converts the first character of every word to uppercase
 
 ##### Details
 
-Words are considered to start at the beginning of the string, or after any
-whitespace character.
+Words are considered to start at the beginning of the string, or after any whitespace
+character.
 
 ###### Parameters
 
@@ -2003,7 +1855,7 @@ whitespace character.
 				$string
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
+									<a href="http://php.net/language.types.string">string</a>
 				
 			</td>
 			<td>
@@ -2030,52 +1882,6 @@ whitespace character.
 
 <hr />
 
-#### <span style="color:#3e6a6e;">ucwordsCallback()</span>
-
-Handles converting a character to uppercase for ::ucwords()
-
-###### Parameters
-
-<table>
-	<thead>
-		<th>Name</th>
-		<th>Type(s)</th>
-		<th>Description</th>
-	</thead>
-	<tbody>
-			
-		<tr>
-			<td>
-				$match
-			</td>
-			<td>
-									<a href="http://www.php.net/language.types.array.php">array</a>
-				
-			</td>
-			<td>
-				The regex match from ::ucwords()
-			</td>
-		</tr>
-			
-	</tbody>
-</table>
-
-###### Returns
-
-<dl>
-	
-		<dt>
-			string
-		</dt>
-		<dd>
-			The uppercase character
-		</dd>
-	
-</dl>
-
-
-<hr />
-
 #### <span style="color:#3e6a6e;">upper()</span>
 
 Converts all lowercase characters to uppercase
@@ -2095,7 +1901,7 @@ Converts all lowercase characters to uppercase
 				$string
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
+									<a href="http://php.net/language.types.string">string</a>
 				
 			</td>
 			<td>
@@ -2141,7 +1947,7 @@ Wraps a string to a specific character width
 				$string
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
+									<a href="http://php.net/language.types.string">string</a>
 				
 			</td>
 			<td>
@@ -2154,7 +1960,7 @@ Wraps a string to a specific character width
 				$width
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.integer.php">integer</a>
+									<a href="http://php.net/language.types.integer">integer</a>
 				
 			</td>
 			<td>
@@ -2167,7 +1973,7 @@ Wraps a string to a specific character width
 				$break
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.string.php">string</a>
+									<a href="http://php.net/language.types.string">string</a>
 				
 			</td>
 			<td>
@@ -2180,7 +1986,7 @@ Wraps a string to a specific character width
 				$cut
 			</td>
 			<td>
-									<a href="http://www.php.net/language.types.boolean.php">boolean</a>
+									<a href="http://php.net/language.types.boolean">boolean</a>
 				
 			</td>
 			<td>
@@ -2200,6 +2006,254 @@ Wraps a string to a specific character width
 		</dt>
 		<dd>
 			The input string with all lowercase characters in uppercase
+		</dd>
+	
+</dl>
+
+
+<hr />
+
+#### <span style="color:#3e6a6e;">checkMbString()</span>
+
+Checks to see if the `mbstring` extension is available
+
+###### Returns
+
+<dl>
+	
+		<dt>
+			void
+		</dt>
+		<dd>
+			Provides no return value.
+		</dd>
+	
+</dl>
+
+
+<hr />
+
+#### <span style="color:#3e6a6e;">convertOffsetToBytes()</span>
+
+Converts an offset in characters to an offset in bytes
+
+###### Parameters
+
+<table>
+	<thead>
+		<th>Name</th>
+		<th>Type(s)</th>
+		<th>Description</th>
+	</thead>
+	<tbody>
+			
+		<tr>
+			<td>
+				$string
+			</td>
+			<td>
+									<a href="http://php.net/language.types.string">string</a>
+				
+			</td>
+			<td>
+				The string to base the offset on
+			</td>
+		</tr>
+					
+		<tr>
+			<td>
+				$offset
+			</td>
+			<td>
+									<a href="http://php.net/language.types.integer">integer</a>
+				
+			</td>
+			<td>
+				The character offset to conver to bytes
+			</td>
+		</tr>
+			
+	</tbody>
+</table>
+
+###### Returns
+
+<dl>
+	
+		<dt>
+			integer
+		</dt>
+		<dd>
+			The converted offset
+		</dd>
+	
+</dl>
+
+
+<hr />
+
+#### <span style="color:#3e6a6e;">detect()</span>
+
+Detects if a UTF-8 string contains any non-ASCII characters
+
+###### Parameters
+
+<table>
+	<thead>
+		<th>Name</th>
+		<th>Type(s)</th>
+		<th>Description</th>
+	</thead>
+	<tbody>
+			
+		<tr>
+			<td>
+				$string
+			</td>
+			<td>
+									<a href="http://php.net/language.types.string">string</a>
+				
+			</td>
+			<td>
+				The string to check
+			</td>
+		</tr>
+			
+	</tbody>
+</table>
+
+###### Returns
+
+<dl>
+	
+		<dt>
+			boolean
+		</dt>
+		<dd>
+			If the string contains any non-ASCII characters
+		</dd>
+	
+</dl>
+
+
+<hr />
+
+#### <span style="color:#3e6a6e;">iconv()</span>
+
+This works around a bug in MAMP 1.9.4+ and PHP 5.3
+
+##### Details
+
+The `iconv()` function does not seem to properly assign the return value to a variable,
+but does work when returning the value.
+
+###### Parameters
+
+<table>
+	<thead>
+		<th>Name</th>
+		<th>Type(s)</th>
+		<th>Description</th>
+	</thead>
+	<tbody>
+			
+		<tr>
+			<td>
+				$in_charset
+			</td>
+			<td>
+									<a href="http://php.net/language.types.string">string</a>
+				
+			</td>
+			<td>
+				The incoming character encoding
+			</td>
+		</tr>
+					
+		<tr>
+			<td>
+				$out_charset
+			</td>
+			<td>
+									<a href="http://php.net/language.types.string">string</a>
+				
+			</td>
+			<td>
+				The outgoing character encoding
+			</td>
+		</tr>
+					
+		<tr>
+			<td>
+				$string
+			</td>
+			<td>
+									<a href="http://php.net/language.types.string">string</a>
+				
+			</td>
+			<td>
+				The string to convert
+			</td>
+		</tr>
+			
+	</tbody>
+</table>
+
+###### Returns
+
+<dl>
+	
+		<dt>
+			string
+		</dt>
+		<dd>
+			The converted string
+		</dd>
+	
+</dl>
+
+
+<hr />
+
+#### <span style="color:#3e6a6e;">ucwordsCallback()</span>
+
+Handles converting a character to uppercase for ::ucwords()
+
+###### Parameters
+
+<table>
+	<thead>
+		<th>Name</th>
+		<th>Type(s)</th>
+		<th>Description</th>
+	</thead>
+	<tbody>
+			
+		<tr>
+			<td>
+				$match
+			</td>
+			<td>
+									<a href="http://php.net/language.types.array">array</a>
+				
+			</td>
+			<td>
+				The regex match from ::ucwords()
+			</td>
+		</tr>
+			
+	</tbody>
+</table>
+
+###### Returns
+
+<dl>
+	
+		<dt>
+			string
+		</dt>
+		<dd>
+			The uppercase character
 		</dd>
 	
 </dl>
