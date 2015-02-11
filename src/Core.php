@@ -365,10 +365,10 @@
 		 * The string output format of this method is very similar to the output of `print_r()`
 		 * except that the following values are represented as special strings:
 		 *
-		 *  - `TRUE`: `'{true}'`
+		 *  - `TRUE` : `'{true}'`
 		 *  - `FALSE`: `'{false}'`
-		 *  - `NULL`: `'{null}'`
-		 *  - `''`: `'{empty_string}'`
+		 *  - `NULL` : `'{null}'`
+		 *  - `''`   : `'{empty_string}'`
 		 *
 		 * @static
 		 * @access public
@@ -539,13 +539,22 @@
 		/**
 		 * Returns a random string of the type and length specified
 		 *
-		 * Valid string types include `'base64'`, `'base56'`, `'base36'`, `'alphanumeric'`,
-		 * `'alpha'`, `'numeric'`, or `'hexadecimal'`, if a different string is provided, it will
-		 * be used for the alphabet.
+		 * Valid string types include
+		 * - `'base64'`
+		 * - `'base56'`
+		 * - `'base36'`
+		 * - `'alphanumeric'`
+		 * - `'alpha'`
+		 * - `'numeric'`
+		 * - `'hexadecimal'`
 		 *
-		 * @param  integer $length  The length of string to return
-		 * @param  string  $type    The type of string to return
-		 * @return string  A random string of the type and length specified
+		 * If a different string is provided, it will be used for the alphabet.
+		 *
+		 * @static
+		 * @access public
+		 * @param integer $length The length of string to return
+		 * @param string $type The type of string to return
+		 * @return string A random string of the type and length specified
 		 */
 		static public function randomString($length, $type='alphanumeric')
 		{
