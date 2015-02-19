@@ -421,10 +421,10 @@ Creates a string representation of any variable using predefined strings for boo
 The string output format of this method is very similar to the output of `print_r()`
 except that the following values are represented as special strings:
 
-- `TRUE`: `'{true}'`
+- `TRUE` : `'{true}'`
 - `FALSE`: `'{false}'`
-- `NULL`: `'{null}'`
-- `''`: `'{empty_string}'`
+- `NULL` : `'{null}'`
+- `''`   : `'{empty_string}'`
 
 ###### Parameters
 
@@ -692,9 +692,16 @@ Returns a random string of the type and length specified
 
 ##### Details
 
-Valid string types include `'base64'`, `'base56'`, `'base36'`, `'alphanumeric'`,
-`'alpha'`, `'numeric'`, or `'hexadecimal'`, if a different string is provided, it will
-be used for the alphabet.
+Valid string types include
+- `'base64'`
+- `'base56'`
+- `'base36'`
+- `'alphanumeric'`
+- `'alpha'`
+- `'numeric'`
+- `'hexadecimal'`
+
+If a different string is provided, it will be used for the alphabet.
 
 ###### Parameters
 
