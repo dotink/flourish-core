@@ -1727,14 +1727,5 @@
 		{
 			return self::upper($match[1]);
 		}
-
-
-		/**
-		 * Forces use as a static class
-		 *
-		 * @access private
-		 * @return void
-		 */
-		private function __construct() { }
 	}
 }

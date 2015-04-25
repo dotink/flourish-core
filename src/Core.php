@@ -43,7 +43,7 @@
 			static $seeded = FALSE;
 
 			if ($seeded) {
-				return;
+				return TRUE;
 			}
 
 			$bytes = NULL;
@@ -82,7 +82,7 @@
 
 			mt_srand($seed);
 
-			$seeded = TRUE;
+			return $seeded = TRUE;
 		}
 
 
@@ -207,7 +207,7 @@
 
 			if ($invalid_oses = array_diff($oses, $valid_oses)) {
 				throw new ProgrammerException(
-					'One or more of the OSes specified, %$1s, is invalid. Must be one of: %2$s.',
+					'One or more of the OSes specified, %s, is invalid. Must be one of: %s.',
 					join(' ',  $invalid_oses),
 					join(', ', $valid_oses)
 				);
@@ -608,14 +608,5 @@
 
 			return $output;
 		}
-
-
-		/**
-		 * Forces use as a static class
-		 *
-		 * @access private
-		 * @return void
-		 */
-		private function __construct() { }
 	}
 }
